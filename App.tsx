@@ -42,7 +42,7 @@ function ChatInterface() {
     const newMsgs = [...messages, { role: 'user', content: input }];
     setMessages(newMsgs); setInput(''); setLoading(true);
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
       const result = await model.generateContent("你是一位好莱坞资深剪辑总监，请用中文犀利地回答：" + input);
       setMessages([...newMsgs, { role: 'model', content: result.response.text() }]);
     } catch (e) { setMessages([...newMsgs, { role: 'model', content: "API报错，请检查 Key 或网络。" }]); }
